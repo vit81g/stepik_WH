@@ -1,0 +1,35 @@
+
+Практика «Проброс трафика»
+Подготовка
+
+Требования к лабораторному стенду:
+
+На вашей операционной системе должно быть установлено программное обеспечение docker и docker-compose. 
+
+Поддерживаемые ОС: Linux,Windows, MacOS (x64/arm).
+ 
+
+Для подготовки стенда:
+
+Необходимо скачать архив по ссылке: socket-lab.zip (Зеркало: socket-lab.zip Яндекс.Диск)
+https://disk.yandex.ru/d/G8wdVUYLTejwPw
+
+https://cybered-my.sharepoint.com/personal/v_karmanov_cyber-ed_ru/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fv%5Fkarmanov%5Fcyber%2Ded%5Fru%2FDocuments%2F%D0%9F%D1%80%D0%BE%D1%84%D0%B5%D1%81%D1%81%D0%B8%D1%8F%20%D0%A5%D0%B0%D0%BA%D0%B5%D1%80%2E%20%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B0%2F10%20%D0%9F%D1%80%D0%BE%D0%B1%D1%80%D0%BE%D1%81%20%D1%82%D1%80%D0%B0%D1%84%D0%B8%D0%BA%D0%B0%2Fsocket%2Dlab%2Ezip&parent=%2Fpersonal%2Fv%5Fkarmanov%5Fcyber%2Ded%5Fru%2FDocuments%2F%D0%9F%D1%80%D0%BE%D1%84%D0%B5%D1%81%D1%81%D0%B8%D1%8F%20%D0%A5%D0%B0%D0%BA%D0%B5%D1%80%2E%20%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B0%2F10%20%D0%9F%D1%80%D0%BE%D0%B1%D1%80%D0%BE%D1%81%20%D1%82%D1%80%D0%B0%D1%84%D0%B8%D0%BA%D0%B0&ga=1
+
+
+Распаковать данный архив и перейти в появившуюся директорию socket-lab-prod в терминальной оболочке вашей ОС. Выполнить команду:
+
+docker-compose up -d
+
+По адресу http://localhost:1337 появится приложение лабораторного стенда.
+ 
+
+Возможные проблемы:
+
+1. Если вы не отключили прошлые лабораторные стенды, может появиться ошибка:
+
+Bind for 0.0.0.0:1338 failed: port is already allocated
+
+В таком случае, выполните команду docker ps, найдите запущенный контейнер, который использует занятый ранее порт, и остановите его командой:
+
+docker stop [имя контейнера или его идентификатор]
