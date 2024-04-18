@@ -1,0 +1,25 @@
+
+Материалы для самостоятельного изучения
+
+Книги:
+
+    “Современные операционные системы” Э. Танненбаум
+    “Компьютерные сети. Принципы, технологии, протоколы” Олифер
+    “Прикладная криптография” Б. Шнаер
+
+Языки программирования:
+
+    Python - https://www.python.org/about/gettingstarted/
+    Java (Kotlin) - https://dev.java/learn/getting-started/
+    PHP - https://www.php.net/manual/ru/
+    JavaScript - https://developer.mozilla.org/ru/docs/Web/JavaScript
+    Go - https://go.dev/learn/
+
+Платформы для тренировок эксплуатации уязвимостей:
+
+    PortSwigger Academy - https://portswigger.net/web-security
+    HackTheBox - https://www.hackthebox.com/
+    VulnHub - https://www.vulnhub.com/
+    TryHackMe - https://tryhackme.com/
+    Киберполигон Standoff365 - https://range.standoff365.com/
+
